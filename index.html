@@ -24,23 +24,23 @@
 
     <form id="address-form">
         <div class="mb-3">
-            <label for="addresses" class="form-label" id="label-address">Введите адреса (по одному на строку):</label>
+            <label for="addresses" class="form-label" id="label-address">Enter wallet addresses (one per line):</label>
             <textarea id="addresses" class="form-control" placeholder="Wallets..." required></textarea>
         </div>
         <button type="submit" id="check-button">
             <img src="icon.svg" alt="Logo" class="button-logo" id="button-logo"> 
-            <span id="check-button-text">Проверить балансы</span>
+            <span id="check-button-text">Check Balances</span>
         </button>
     </form>
 
     <div id="result" class="table-responsive">
-        <h3 class="text-center" id="result-header">Результаты проверки</h3>
+        <h3 class="text-center" id="result-header">Balance Checking Results</h3>
         <table class="table" id="balance-table">
             <thead>
                 <tr>
-                    <th id="th-number">Номер</th>
-                    <th id="th-address">Адрес</th>
-                    <th id="th-balance">Баланс</th>
+                    <th id="th-number">Number</th>
+                    <th id="th-address">Address</th>
+                    <th id="th-balance">Balance</th>
                 </tr>
             </thead>
             <tbody>
