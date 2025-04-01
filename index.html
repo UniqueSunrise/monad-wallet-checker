@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monad Balance Checker</title>
+    
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="language-selector">
+        <span class="flag" onclick="changeLanguage('en')">🇺🇸</span>
+        <span class="flag" onclick="changeLanguage('ru')">🇷🇺</span>
+    </div>
+    
+    <img src="./monad_full.svg" alt="Monad Logo" class="logo">
+
+    <form id="address-form">
+        <div class="mb-3">
+            <label for="addresses" class="form-label" id="label-address">Enter wallet addresses (one per line):</label>
+            <textarea id="addresses" class="form-control" placeholder="Wallets..." required></textarea>
+        </div>
+        <button type="submit" id="check-button">
+            <img src="icon.svg" alt="Logo" class="button-logo" id="button-logo"> 
+            <span id="check-button-text">Check Balances</span>
+        </button>
+    </form>
+
+    <div id="result" class="table-responsive">
+        <h3 class="text-center" id="result-header">Balance Checking Results</h3>
+        <table class="table" id="balance-table">
+            <thead>
+                <tr>
+                    <th id="th-number">Number</th>
+                    <th id="th-address">Address</th>
+                    <th id="th-balance">Balance</th>
+                    <th id="th-nft">1M MONAD NFT</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
