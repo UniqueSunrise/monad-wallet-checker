@@ -29,18 +29,13 @@ const TOKEN_ABI = [
 ];
 
 const TOKENS = [
-    { symbol: 'CHOG', address: '0xE0590015A873bF326bd645c3E1266d4db41C4E6B', icon: 'chog.png' },
-    { symbol: 'DAK', address: '0x0F0BDEbF0F83cD1EE3974779Bcb7315f9808c714', icon: 'dak.png' },
-    { symbol: 'YAKI', address: '0xfe140e1dCe99Be9F4F15d657CD9b7BF622270C50', icon: 'yaki.png' }
+    { symbol: 'CHOG', address: '0xE0590015A873bF326bd645c3E1266d4db41C4E6B' },
+    { symbol: 'DAK', address: '0x0F0BDEbF0F83cD1EE3974779Bcb7315f9808c714' },
+    { symbol: 'YAKI', address: '0xfe140e1dCe99Be9F4F15d657CD9b7BF622270C50' }
 ];
 
 const nftContract = new web3.eth.Contract(NFT_ABI, NFT_CONTRACT);
 let currentLanguage = 'en';
-
-// Функция задержки
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 document.getElementById('address-form').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -83,9 +78,6 @@ document.getElementById('address-form').addEventListener('submit', async (e) => 
             nftCell.style.backgroundColor = hasNFT ? '#4CAF50' : 'transparent';
             nftCell.style.color = hasNFT ? 'white' : 'inherit';
 
-            // Задержка перед запросами баланса токенов
-            await sleep(1000); // Задержка 1 секунда
-
             // Получение баланса токенов для каждого токена
             for (const token of TOKENS) {
                 const tokenCell = row.insertCell(-1);
@@ -100,27 +92,7 @@ document.getElementById('address-form').addEventListener('submit', async (e) => 
                     const balance = parseFloat(balanceRaw) / (10 ** decimals);
 
                     if (balance > 0) {
-                        // Создаем контейнер для иконки и баланса
-                        const tokenContainer = document.createElement('div');
-                        tokenContainer.style.display = 'flex';
-                        tokenContainer.style.alignItems = 'center';
-
-                        // Добавляем иконку
-                        const tokenIcon = document.createElement('img');
-                        tokenIcon.src = token.icon;
-                        tokenIcon.alt = token.symbol;
-                        tokenIcon.style.height = '20px';
-                        tokenIcon.style.marginRight = '5px';
-
-                        // Добавляем текст с балансом
-                        const tokenText = document.createElement('span');
-                        tokenText.textContent = balance.toFixed(4);
-                        tokenText.title = `${balance.toFixed(4)} ${token.symbol}`;
-
-                        tokenContainer.appendChild(tokenIcon);
-                        tokenContainer.appendChild(tokenText);
-
-                        tokenCell.appendChild(tokenContainer);
+                        tokenCell.innerText = balance.toFixed(4);
                     } else {
                         tokenCell.innerText = '-';
                     }
